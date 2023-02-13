@@ -1,0 +1,9 @@
+* {
+    background-color: #a32424;
+}
+.task_ul {
+    background-color: rgb(62, 5, 5);
+    color: aliceblue;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}

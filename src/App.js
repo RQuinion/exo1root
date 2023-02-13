@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import TaskList from './Components/TaskList';
 
 function App() {
+  const [todoList, setTodolist] = useState([]);
+  const [task, setTasks] = useState("");
+
+  const addTask = (event) => {
+    event.preventDefault();
+    setTodolist([...todoList,task])
+    setTasks("")
+    console.log(todoList)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1> Bienvenue sur la TodoApp</h1>
+      <form onSubmit={(event) => addTask(event)}>
+        <input value={task} onChange={(event) => setTasks(event.currentTarget.value)} type="text" placeholder='New Task' />
+        <button type='submit'>Add task</button>
+      </form>
+
+      <TaskList taskList={todoList}/>
     </div>
   );
 }
